@@ -5,22 +5,13 @@ const TableHeader = ({ handleSorting }) => {
   return (
     <thead>
       <tr>
-        <HeaderCell
-          value="name"
-          handleChange={() => handleSorting("name", "asc")}
-        />
+        <HeaderCell value="name" handleChange={() => handleSorting("name")} />
         <HeaderCell
           value="population"
-          handleChange={() => handleSorting("population", "asc")}
+          handleChange={() => handleSorting("population")}
         />
-        <HeaderCell
-          value="area"
-          handleChange={() => handleSorting("area", "asc")}
-        />
-        <HeaderCell
-          value="gdp"
-          handleChange={() => handleSorting("gdp", "asc")}
-        />
+        <HeaderCell value="area" handleChange={() => handleSorting("area")} />
+        <HeaderCell value="gdp" handleChange={() => handleSorting("gdp")} />
       </tr>
     </thead>
   );
