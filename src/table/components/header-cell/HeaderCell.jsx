@@ -1,7 +1,7 @@
 import React from "react";
 
-const HeaderCell = ({ value }) => {
-  return <th>{value}</th>;
+const HeaderCell = ({ value, handleChange }) => {
+  return <th onClick={handleChange}>{value}</th>;
 };
 
 export default HeaderCell;

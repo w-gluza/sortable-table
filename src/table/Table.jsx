@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Table.css";
 import TableHeader from "./components/table-header/TableHeader";
 import TableBody from "./components/table-body/TableBody";
 // import TableFooter from "./components/table-footer/TableFooter";
-import data from "../resources/resources";
+import rawData from "../resources/resources";
 
 const Table = () => {
   const sortValues = (key, order) => (a, b) => {
@@ -18,14 +18,20 @@ const Table = () => {
     return order === "desc" ? comparison * -1 : comparison;
   };
 
-  console.log(data.sort(sortValues("gdp", "asc")));
+  const initialData = rawData.slice(0).sort(sortValues("name", "asc"));
+  const [sortedData, setSortedData] = useState(initialData);
 
+  const handleSorting = (k, o) => {
+    console.log("key:", k, "order:", o);
+    const test = sortValues(k, o);
+    setSortedData(rawData.slice(0).sort(test));
+  };
   return (
     <>
       <p className="paragraph">Table</p>
       <table className="table">
-        <TableHeader />
-        <TableBody data={data} />
+        <TableHeader handleSorting={handleSorting} />
+        <TableBody data={sortedData} />
         {/* <TableFooter /> */}
       </table>
     </>
